@@ -11,6 +11,9 @@ type Operation interface {
 	Delete(t int) []int
 	Shift(v int) []int
 	Unshift(i, v int) []int
+	DeleteSameValue() []int
+	ReturnFirstRecurringv() []int
+	Sum(target int) []int
 }
 
 func (d *Data) Push(v int) []int {
@@ -75,4 +78,44 @@ func (d *Data) Unshift(i, v int) []int {
 	}
 
 	return newSlice
+}
+
+func (d *Data) DeleteSameValue() []int {
+	seen := make(map[int]bool)
+	result := []int{}
+
+	for _, v := range d.Arrays {
+		if !seen[v] {
+			result = append(result, v)
+			seen[v] = true
+		}
+	}
+
+	fmt.Println(seen)
+	return result
+}
+
+func (d *Data) ReturnFirstRecurringv() (bool, int) {
+	seen := make(map[int]bool)
+
+	for _, v := range d.Arrays {
+		if seen[v] {
+			return true, v
+		}
+		seen[v] = true
+	}
+
+	return false, 0
+}
+
+func (d *Data) Sum(target int) []int {
+	seen := make(map[int]int)
+	for i, v := range d.Arrays {
+		diff := target - v
+		if idx, found := seen[diff]; found {
+			return []int{i, idx}
+		}
+		seen[v] = i
+	}
+	return nil
 }
