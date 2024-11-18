@@ -1,21 +1,24 @@
 package main
 
 import (
-	"linked-list/linkedlist"
+	"fmt"
+	"linked-list/singlelist"
 )
 
 func main() {
-	newLinkedList := linkedlist.LinkedList{}
+	// create new singlelist
 
-	newLinkedList.Prepend(1)
-	newLinkedList.Prepend(4)
-	newLinkedList.Prepend(5)
-	newLinkedList.Prepend(10)
-	newLinkedList.Prepend(24) // last input are head
+	newSingleList := singlelist.SingleList{}
 
-	newLinkedList.Print()
+	newSingleList.Add(2)
+	newSingleList.Add(4)
+	newSingleList.Add(5)
+	newSingleList.Add(1)
+	newSingleList.Add(8)
+	newSingleList.Print()
 
-	newLinkedList.Delete(5)
+	fmt.Println("")
 
-	newLinkedList.Print()
+	newSingleList.Remove(5)
+	newSingleList.Print()
 }
