@@ -33,7 +33,7 @@ func (list *LinkedList) Pop() {
 	}
 }
 
-func (list *LinkedList) Lookup() {
+func (list *LinkedList) Traverse() {
 	if list.Head == nil {
 		return
 	}
@@ -46,8 +46,8 @@ func (list *LinkedList) Lookup() {
 	}
 }
 
-func (list *LinkedList) Peek() {
-	fmt.Printf("%d \n", list.Head.Data)
+func (list *LinkedList) Peek() int {
+	return list.Head.Data
 }
 
 func (list *LinkedList) IsEmpty() bool {
