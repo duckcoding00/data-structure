@@ -85,21 +85,15 @@ func (list *LinkedList) InsertSpesifik(p, v int) {
 		return
 	}
 
-	// 10 20 30 (2, 15)
-	// 15 -> 20
-	// 10 <- 15
 	newNode.Next = current.Next
 	newNode.Prev = current
 
-	// 20 != nil
-	// 15 <- 20
 	if current.Next != nil {
 		current.Next.Prev = &newNode
 	} else {
 		list.Tail = &newNode
 	}
 
-	// 10 -> 15
 	current.Next = &newNode
 }
 
@@ -170,5 +164,30 @@ func (list *LinkedList) DeleteSpesifik(v int) {
 	current.Prev.Next = current.Next
 	if current.Next != nil {
 		current.Next.Prev = current.Prev
+	}
+}
+
+func (list *LinkedList) Sorting() {
+	if list.Head == nil || list.Tail == nil {
+		return
+	}
+
+	swapped := true
+
+	for swapped {
+		current := list.Head
+		swapped = false
+
+		for current.Next != nil {
+			if current.Data > current.Next.Data {
+				temp := current.Data
+				current.Data = current.Next.Data
+				current.Next.Data = temp
+
+				swapped = true
+			}
+
+			current = current.Next
+		}
 	}
 }

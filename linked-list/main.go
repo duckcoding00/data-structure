@@ -30,16 +30,20 @@ func SingleList() {
 func DoubleList() {
 	newList := doublelist.LinkedList{}
 
-	newList.AddBegining(1)
-	newList.AddBegining(2)
-	newList.AddEnd(3)
-	newList.AddEnd(4)
-	newList.AddEnd(5)
-	newList.AddEnd(6)
-	newList.AddEnd(7)
+	AddBegining := []int{1, 2, 3, 4, 5}
+	for _, v := range AddBegining {
+		newList.AddBegining(v)
+	}
 	newList.Forward()
-	println("input 8 di posisi 6")
-	newList.InsertSpesifik(6, 8)
+
+	AddEnd := []int{7, 8, 9}
+	for _, v := range AddEnd {
+		newList.AddEnd(v)
+	}
+	newList.Forward()
+
+	newList.InsertSpesifik(1, 8)
+	fmt.Printf("input %d di posisi %d \n", 1, 8)
 	newList.Forward()
 	println("delete first")
 	newList.DeleteFirst()
@@ -52,6 +56,9 @@ func DoubleList() {
 	newList.Forward()
 	println("reverse")
 	newList.Reverse()
+
+	newList.Sorting()
+	newList.Forward()
 }
 
 func main() {
